@@ -7,9 +7,10 @@ const data = new SharedArray('requests', function () {
   return JSON.parse(open('./data/requests.json'));
 });
 
+const host = `http://localhost:2999`; // baseline Hono bottleneck
 // const host = `http://localhost:3000`; // drizzle
 // const host = `http://localhost:3001`; // prisma
-const host = `http://localhost:3002`; // typeorm
+// const host = `http://localhost:3002`; // typeorm
 
 export const options = {
   vus: 2500,
@@ -25,5 +26,5 @@ export default function () {
     timeout: '30s',
   });
 
-  sleep(0.2 * (scenario.iterationInTest % 6));
+  sleep(0.1);
 }
