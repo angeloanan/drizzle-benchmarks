@@ -9,7 +9,8 @@
     "start:generate": "tsx ./src/generate.ts",
     "prepare:prisma": "prisma generate --schema src/schema.prisma",
     "start:prisma": "tsx ./src/prisma-server.ts",
-    "start:drizzle": "tsx ./src/drizzle-server.ts"
+    "start:drizzle": "tsx ./src/drizzle-server.ts",
+    "start:typeorm": "tsx ./src/typeorm-server.ts"
   },
   "keywords": [],
   "author": "",
@@ -43,6 +44,7 @@
     "pg": "^8.11.2",
     "pidusage": "^3.0.2",
     "prisma": "^5.1.1",
-    "ramda": "^0.29.0"
+    "ramda": "^0.29.0",
+    "typeorm": "^0.3.19"
   }
 }

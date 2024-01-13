@@ -7,8 +7,9 @@ const data = new SharedArray('requests', function () {
   return JSON.parse(open('./data/requests.json'));
 });
 
-const host = `http://192.168.31.144:3000`; // drizzle
-// const host = `http://192.168.31.144:3001`; // prisma
+// const host = `http://localhost:3000`; // drizzle
+// const host = `http://localhost:3001`; // prisma
+const host = `http://localhost:3002`; // typeorm
 
 export const options = {
   vus: 2500,
