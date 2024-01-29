@@ -1,4 +1,4 @@
-import { Column, Entity, Index, OneToMany, OneToOne } from "typeorm";
+import { Column, Entity, Index, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { Orders } from "./orders";
 import { Products } from "./products";
 
@@ -13,16 +13,18 @@ export class OrderDetails {
   @Column({ name: "discount", type: "double precision", nullable: false })
   discount: number
 
-  @Index()
-  @Column({ name: "order_id", type: "integer", nullable: false })
-  orderId: number
   @OneToOne<Orders>(() => Orders, (orders) => orders.id, { nullable: false, onDelete: "CASCADE" })
+  @JoinColumn({ name: "order_id" })
   order: Orders
-
   @Index()
-  @Column({ name: "product_id", type: "integer", nullable: false })
-  productId: number
+  @PrimaryColumn({ name: "order_id", type: "integer", nullable: false })
+  orderId: number
+
   @OneToMany<Products>(() => Products, (products) => products.id, { nullable: false, onDelete: "CASCADE" })
+  @JoinColumn({ name: "product_id" })
   product: Orders
+  @Index()
+  @PrimaryColumn({ name: "product_id", type: "integer", nullable: false })
+  productId: number
 }
 

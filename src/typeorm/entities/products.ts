@@ -1,4 +1,4 @@
-import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Suppliers } from "./suppliers";
 
 @Entity({ name: "products" })
@@ -31,6 +31,7 @@ export class Products {
   @Column({ name: "supplier_id", type: "integer", nullable: false })
   supplierId: number
   @ManyToOne<Suppliers>(() => Suppliers, (supplier) => supplier.id, { nullable: false, onDelete: "CASCADE" })
+  @JoinColumn({ name: "supplier_id" })
   supplier: Suppliers
 }
 

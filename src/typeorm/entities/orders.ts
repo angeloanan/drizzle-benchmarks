@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Customers } from "./customers";
 import { Employees } from "./employees";
 
@@ -38,11 +38,13 @@ export class Orders {
   shipCountry: string
 
   @ManyToOne<Customers>(() => Customers, (customer) => customer.id, { nullable: false, onDelete: "CASCADE" })
+  @JoinColumn({ name: "customer_id" })
   customer: Customers
   @Column({ name: "customer_id", type: "integer", nullable: false })
   customerId: number
 
   @ManyToOne<Employees>(() => Employees, (employee) => employee.id, { nullable: false, onDelete: "CASCADE" })
+  @JoinColumn({ name: "employee_id" })
   employee: Employees
   @Column({ name: "employee_id", type: "integer", nullable: false })
   employeeId: number

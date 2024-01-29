@@ -1,4 +1,4 @@
-import { Column, Entity, Index, JoinColumn, OneToOne } from "typeorm";
+import { Column, Entity, Index, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "employees" })
 export class Employees {
@@ -44,10 +44,11 @@ export class Employees {
   @Column({ name: "notes", type: "text", nullable: true })
   notes: string
 
-  @OneToOne<Employees>(() => Employees, (employee) => employee.recepientId, { nullable: true })
+  @OneToOne<Employees>(() => Employees, (employee) => employee.id, { nullable: true })
+  @JoinColumn({ name: "recipient_id" })
   recepient?: Employees
   @Index()
-  @JoinColumn({})
+  @Column({ name: "recipient_id", type: "integer", nullable: true })
   recepientId?: number
 }
 
