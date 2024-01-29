@@ -3,12 +3,9 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { DataSource } from "typeorm";
 import "dotenv/config";
+import { typeormDatasource } from "./typeorm/datasource";
 
-const datasource = new DataSource({
-  type: "postgres",
-  url: process.env.DATABASE_URL,
-})
-
+const datasource = typeormDatasource
 
 const app = new Hono();
 app.get("/customers", async (c) => {
