@@ -11,6 +11,7 @@
     "start:prisma": "tsx ./src/prisma-server.ts",
     "start:drizzle": "tsx ./src/drizzle-server.ts",
     "start:typeorm-raw": "tsx ./src/typeorm-server-raw-query.ts",
+    "start:typeorm-repository": "tsx ./src/typeorm-server-repositories-api.ts"
   },
   "keywords": [],
   "author": "",
